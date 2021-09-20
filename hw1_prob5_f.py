@@ -56,8 +56,6 @@ def cross_validation_error(splitx, splity, numfolds, D, lamda):
 
 
 numfolds = 4
-lamda = 0.1
-polyorders = range(6)
 
 data = loadmat("polynomial_regression_samples.mat")
 x = data["x"]
@@ -76,4 +74,7 @@ splitpoints = np.linspace(0, npts, numfolds + 1, dtype=int)
 splitx = np.array([xshuffle[splitpoints[i]:splitpoints[i + 1], :] for i in range(len(splitpoints) - 1)])
 splity = np.array([yshuffle[splitpoints[i]:splitpoints[i + 1]] for i in range(len(splitpoints) - 1)])
 
-err = [cross_validation_error(splitx,splity,numfolds,p,lamda) for p in polyorders]
+lamdas = [0.05,0.1,0.15,0.2]
+polyorders = range(6)
+
+# err = [cross_validation_error(splitx,splity,numfolds,p,lamda) for p in polyorders]
